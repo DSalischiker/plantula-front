@@ -1,6 +1,14 @@
 <template>
   <article class="section">
     <div class="container">
+      <!-- Left -->
+      <section>
+        <b-button type="is-text is-flex is-justify-content-start">
+          <router-link to="/inventory">
+            Volver
+          </router-link>
+        </b-button>
+      </section>
       <div class="columns">
         <div class="column is-half is-offset-one-quarter">
           <h1 class="title has-text-centered">Agregar Planta</h1>

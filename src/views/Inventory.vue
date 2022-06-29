@@ -1,12 +1,18 @@
 <template>
   <div class="home">
     <section class="hero is-small is-secondary mb-4" spaced="true">
-      <div class="hero-body">
-        <p class="title is-4 is-black" >Inventario de {{ user.displayName }}</p>
+      <div class="hero-body is-flex is-flex-direction-column is-justify-content-start">
+        <p class="title is-4 is-black" >Inventario de user</p>
       </div>
+      <router-link
+        class="button is-primary"
+        :to="{ name: 'addPlant' }"
+      >
+        <strong>Agregar planta</strong>
+      </router-link>
     </section>
       <div class="container">
-        <template v-if="user">
+        <template v-if="!user">
           <section class="hero is-small is-secondary" spaced="true">
 
           </section>
@@ -33,9 +39,72 @@
                 </div>
               </div>
             </div>
-            <div class="column">2</div>
-            <div class="column">3</div>
-            <div class="column">4</div>
+            <div class="column">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-square">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="is-flex is-justify-content-start">
+                    <p class="title is-4 has-text-dark">Fitonia</p>
+                  </div>
+
+                  <div class="content is-flex is-flex-direction-column is-justify-content-start">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+
+                    <br>
+                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-square">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="is-flex is-justify-content-start">
+                    <p class="title is-4 has-text-dark">Fitonia</p>
+                  </div>
+
+                  <div class="content is-flex is-flex-direction-column is-justify-content-start">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+
+                    <br>
+                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-square">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="is-flex is-justify-content-start">
+                    <p class="title is-4 has-text-dark">Fitonia</p>
+                  </div>
+
+                  <div class="content is-flex is-flex-direction-column is-justify-content-start">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+
+                    <br>
+                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </template>
       </div>

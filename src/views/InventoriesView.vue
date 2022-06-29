@@ -13,7 +13,7 @@
     </section>
     <section class="section">
       <div class="container">
-        <h1 class="title has-text-centered is-white">
+        <h1 class="title has-text-centered">
           Inventarios
         </h1>
       </div>
