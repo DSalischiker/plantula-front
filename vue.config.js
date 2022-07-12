@@ -6,6 +6,9 @@ module.exports = {
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
   },
+  devServer: {
+      proxy: 'http://localhost:8080',
+  }
 }
 
 function addStyleResource (rule) {

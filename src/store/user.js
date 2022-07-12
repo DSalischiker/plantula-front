@@ -1,6 +1,9 @@
+import { API } from '../../axios.config';
+
 //import { auth } from "../firebase.js";
 const state = {
   user: null,
+  token: null,
 }
 
 const getters = {
@@ -14,6 +17,12 @@ const mutations = {
 }
 
 const actions = {
+  async doLogin({ commit }, {email, password}) {
+    console.log(email, password);
+    const user = await API.post("/login", { email: email , password: password });
+    state.token = user.token;
+    commit("setUser", user);
+  },
   /* getCurrentUser() {
     return new Promise((resolve, reject) => {
       const unsubscribe = auth.onAuthStateChanged(
