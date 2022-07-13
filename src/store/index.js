@@ -20,7 +20,6 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-
     /* checkAuth({ dispatch, commit }) {
       auth.onAuthStateChanged(function(user) {
         if (user) {

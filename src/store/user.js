@@ -1,18 +1,24 @@
 import { API } from '../../axios.config';
-
+//import axios from 'axios';
 //import { auth } from "../firebase.js";
 const state = {
   user: null,
-  token: null,
+  session: {
+    logged: false,
+    token: ''
+  }
 }
 
 const getters = {
-
+  token: state => state.session,
+  email: state => state.user,
 }
 
 const mutations = {
   setUser(state, user) {
-    state.user = user;
+    state.user = user.data;
+    state.session.logged = true;
+    state.session.token = user.data.token;
   }
 }
 
@@ -20,9 +26,34 @@ const actions = {
   async doLogin({ commit }, {email, password}) {
     console.log(email, password);
     const user = await API.post("/login", { email: email , password: password });
-    state.token = user.token;
+    console.log(user);
     commit("setUser", user);
   },
+  async doRegister({ commit }, {email, password}) {
+    const user = await API.post("/signup", {email, password});
+    commit("setUser", user);
+  },
+  /* async updateProfile({ commit }, { email, password }) {
+    const user = this.$store.getters.user;
+
+    if (email) {
+      await user.updateEmail(email);
+    }
+
+    if (password) {
+      await user.updatePassword(password);
+    }
+
+    if (phone) {
+      await user.updatePhone(phone);
+    }
+
+    if (neighbourhood) {
+      await user.updateNeighbourhood(neighbourhood);
+    }
+
+    commit("setUser", user);
+  }, */
   /* getCurrentUser() {
     return new Promise((resolve, reject) => {
       const unsubscribe = auth.onAuthStateChanged(

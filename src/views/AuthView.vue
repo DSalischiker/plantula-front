@@ -53,7 +53,7 @@
           <template v-if="action === 'register'">
             <h1 class="title has-text-centered">Register</h1>
             <form @submit.prevent="doRegister">
-              <div class="field">
+              <!-- <div class="field">
                 <label class="label">Username</label>
                 <div class="control">
                   <input
@@ -64,7 +64,7 @@
                     required
                   >
                 </div>
-              </div>
+              </div> -->
 
               <div class="field">
                 <label class="label">Email</label>
@@ -91,7 +91,7 @@
                 </div>
               </div>
 
-              <div class="field">
+              <!-- <div class="field">
                 <label class="label">Teléfono</label>
                 <div class="control">
                   <input
@@ -102,9 +102,9 @@
                     required
                   >
                 </div>
-              </div>
+              </div> -->
 
-              <b-field
+             <!--  <b-field
                 label="Barrio">
                 <b-select
                   v-model="userData.neighbourhood"
@@ -117,7 +117,7 @@
                   <option value="Caballito">Caballito</option>
                   <option value="Paternal">Paternal</option>
                 </b-select>
-              </b-field>
+              </b-field> -->
 
               <div class="field has-text-right">
                 <div class="control">
@@ -181,11 +181,8 @@ export default {
       action: 'login',
       isLoading: false,
       userData: {
-        name: "",
         email: "",
-        password: "",
-        phone: "",
-        neighbourhood: ""
+        password: ""
       }
     }
   },
@@ -194,17 +191,14 @@ export default {
       this.$router.push({ name: "home" });
     },
     resetData() {
-      this.userData.name = this.userData.email = this.userData.password = this.userData.phone = this.userData.neighbourhood = "";
+      this.userData.email = this.userData.password = "";
     },
     async doRegister() {
       this.isLoading = true;
-      /* try {
+      try {
         await this.$store.dispatch("user/doRegister", {
-          name: this.userData.name,
           email: this.userData.email,
           password: this.userData.password,
-          phone: this.userData.phone,
-          neighbourhood: this.userData.neighbourhood
         });
         this.$toast.success("Account created");
         this.resetData();
@@ -214,7 +208,7 @@ export default {
         console.error(error.message)
       } finally {
         this.isLoading = false;
-      } */
+      }
     },
     async doLogin() {
       this.isLoading = true;
