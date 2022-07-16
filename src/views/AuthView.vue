@@ -39,7 +39,7 @@
                     class="button is-primary"
                     :class="{ 'is-loading': isLoading }"
                   >
-                    Login
+                    <strong>Login</strong>
                   </button>
                 </div>
               </div>
@@ -51,7 +51,9 @@
 
           <!-- Register Form -->
           <template v-if="action === 'register'">
-            <h1 class="title has-text-centered">Register</h1>
+            <h1 class="title has-text-centered">
+              Register
+            </h1>
             <form @submit.prevent="doRegister">
               <!-- <div class="field">
                 <label class="label">Username</label>
@@ -126,7 +128,7 @@
                     class="button is-primary"
                     :class="{ 'is-loading': isLoading }"
                   >
-                    Register
+                    <strong>Register</strong>
                   </button>
                 </div>
               </div>
