@@ -200,7 +200,7 @@ export default {
           email: this.userData.email,
           password: this.userData.password,
         });
-        this.$toast.success("Account created");
+        this.$toast.success("Cuenta Creada");
         this.resetData();
         this.redirect();
       } catch (error) {
@@ -226,20 +226,6 @@ export default {
       } finally {
         this.isLoading = false;
       }
-      /* try {
-        await this.$store.dispatch("user/doLogin", {
-          email: this.userData.email,
-          password: this.userData.password,
-        });
-        this.$toast.success("Logged in");
-        this.resetData();
-        this.redirect();
-      } catch (error) {
-        this.$toast.error(error.message);
-        console.error(error.message)
-      } finally {
-        this.isLoading = false;
-      } */
     },
     async doReset() {
       this.isLoading = true;

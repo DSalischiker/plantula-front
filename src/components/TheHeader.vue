@@ -10,7 +10,7 @@
         Inicio
       </b-navbar-item>
       <b-navbar-item tag="router-link" :to="{ path: '/inventory' }">
-        Inventario
+        Mi inventario
       </b-navbar-item>
       <b-navbar-dropdown label="Info" aria-role="menu" :focusable="true">
         <b-navbar-item aria-role="menuitem">

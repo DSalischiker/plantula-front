@@ -2,8 +2,8 @@
   <div>
     <section class="hero is-small is-secondary" spaced="true">
       <div class="hero-body">
-        <p class="title is-4 is-black" >Bienvenide</p>
-        <p class="subtitle is-6">Llenemos el mundo de plantitas.</p>
+        <p class="title is-4 is-black" >¡Bienvenide!</p>
+        <p class="subtitle is-6">Pedí esquejes, creá tu inventario, y juntes, llenemos la ciudad de plantitas.</p>
       </div>
     </section>
     <!-- <section>
@@ -16,7 +16,7 @@
         <h1 class="title has-text-centered is-black">
           Plantas propagables
         </h1>
-        <div class="is-flex is-column">
+        <div class="">
           <plant v-for="plant in propagablePlants" :key="plant._id" :plant="plant" />
         </div>
 
@@ -54,14 +54,17 @@ export default {
   methods: {
     async getPropagablePlants() {
       this.isLoading = true;
-      try {
-        await this.$store.dispatch("plant/getPropagablePlants");
-        this.$toast.success(`Plantas propagables cargadas`);
-      } catch (error) {
-        this.$toast.error(error.message);
-      } finally {
-        this.isLoading = false;
+      if (this.propagablePlants === undefined) {
+        try {
+          await this.$store.dispatch("plant/getPropagablePlants");
+          this.$toast.success(`Plantas propagables cargadas`);
+        } catch (error) {
+          this.$toast.error(error.message);
+        } finally {
+          this.isLoading = false;
+        }
       }
+
     }
   }
 }
