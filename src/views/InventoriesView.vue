@@ -6,36 +6,63 @@
         <p class="subtitle is-6">Llenemos el mundo de plantitas.</p>
       </div>
     </section>
-    <section>
+    <!-- <section>
       <router-link :to="{ name: 'createInventory' }">
         <button type="button" class="button is-primary">Crear inventario</button>
       </router-link>
-    </section>
+    </section> -->
     <section class="section">
       <div class="container">
-        <h1 class="title has-text-centered">
-          Inventarios
+        <h1 class="title has-text-centered is-black">
+          Plantas propagables
         </h1>
-      </div>
+        <div class="is-flex is-column">
+          <plant v-for="plant in propagablePlants" :key="plant._id" :plant="plant" />
+        </div>
 
-      <inventory-item :inventories="inventories" />
+      </div>
     </section>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-/* import {fb, auth} from "../firebase"; */
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
-import InventoryItem from "../components/InventoryItem.vue";
+import Plant from "../components/Plant.vue";
 export default {
-  name: 'InventoriesView',
+  name: 'PropagablePlantsView',
+  mounted() {
+    this.getPropagablePlants();
+  },
+  data() {
+    return {
+      isLoading: false,
+    }
+  },
   components: {
-    InventoryItem
+    Plant
   },
   computed: {
-    ...mapState("inventories", ["inventories"])
+    /* propagablePlants(){
+      return this.$store.getters.propagablePlants;
+    }, */
+    ...mapGetters({
+      propagablePlants: "plant/propagablePlants"
+    })
+  },
+  methods: {
+    async getPropagablePlants() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("plant/getPropagablePlants");
+        this.$toast.success(`Plantas propagables cargadas`);
+      } catch (error) {
+        this.$toast.error(error.message);
+      } finally {
+        this.isLoading = false;
+      }
+    }
   }
 }
 </script>
@@ -50,7 +77,7 @@ export default {
   margin-left: 1em;
 }
 .title{
-  color: $light !important;
+  //color: $light !important;
 }
 .subtitle{
   color: $light !important;

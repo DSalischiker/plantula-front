@@ -1,4 +1,4 @@
-//import { db } from "../firebase";
+//import { API } from '../../axios.config';
 const state = {
   inventories: []
 };
@@ -10,6 +10,9 @@ const mutations = {
 };
 
 const actions = {
+  /* async getUserInventory({ commit }, {userId}) {
+    await
+  } */
   /* async createInventory({ rootState }, { name, description }) {
     await db
       .collection("inventories")

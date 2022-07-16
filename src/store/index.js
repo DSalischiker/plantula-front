@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import user from "./user";
 import inventories from "./inventories";
+import plant from "./plant";
 import utils from "./utils";
 
 //import { auth } from "../firebase.js";
@@ -35,6 +36,7 @@ const store = new Vuex.Store({
   modules: {
     user,
     inventories,
+    plant,
     utils
   }
 })
@@ -42,4 +44,4 @@ const store = new Vuex.Store({
 export default store;
 
 //Initial load
-store.dispatch("checkAuth");
+//store.dispatch("checkAuth");

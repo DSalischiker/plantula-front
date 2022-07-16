@@ -26,7 +26,7 @@
               </div>
             </div>
 
-            <b-field label="Grouped">
+            <!-- <b-field label="Grouped">
               <b-select placeholder="Especie">
                 <b-icon
                   icon="seedling"
@@ -50,7 +50,7 @@
                   <option value="Albahaca">Albahaca</option>
                 </optgroup>
               </b-select>
-            </b-field>
+            </b-field> -->
 
             <div>
               <b-field>
@@ -99,7 +99,7 @@
 
             <div>
               <b-field>
-                <b-checkbox name="isPropagable" v-model="plantData.isPropagable">Es propagable</b-checkbox>
+                <b-checkbox name="propagable" v-model="plantData.propagable">Es propagable</b-checkbox>
               </b-field>
               <!-- <b-field>
                   <b-checkbox v-model="plantData.isPropagable">
@@ -107,6 +107,10 @@
                   </b-checkbox>
               </b-field> -->
             </div>
+
+            <b-field label="Estado de crecimiento">
+              <b-slider v-model="plantData.growState" :min="1" :max="5" size="is-small" ticks></b-slider>
+            </b-field>
 
             <b-field label="Sol">
               <b-slider v-model="plantData.sunAmount" :min="1" :max="5" size="is-small" ticks></b-slider>
@@ -142,10 +146,13 @@ export default {
       isLoading: false,
       plantData: {
         name: "",
+        image: "",
+        propagable: false,
+        growState: 0,
+        sunType: 0,
+        sunAmount: 0,
+        water: 0,
         description: "",
-        isPropagable: true,
-        sunAmount: 3,
-        waterAmount: 3,
       },
       dropFiles: [],
     }
@@ -153,7 +160,27 @@ export default {
   methods: {
     async createPlant() {
       this.isLoading = true;
-
+      try {
+        await this.$store.dispatch("plant/addPlant", {
+          name: this.plantData.name,
+          image: this.plantData.image,
+          propagable: this.plantData.propagable,
+          growState: this.plantData.growState,
+          sunType: this.plantData.sunType,
+          sunAmount: this.plantData.sunAmount,
+          water: this.plantData.water,
+          description: this.plantData.description
+        });
+        this.$toast.success(`¡${this.plantData.name} agregada con éxito!`);
+        this.plantData.name = this.plantData.image = this.plantData.description = "";
+        this.plantData.propagable = false;
+        this.plantData.growState = this.plantData.sunType = this.plantData.sunAmount = this.plantData.water = 0;
+      } catch (error) {
+        console.error(error.message);
+        this.$toast.error(error.message);
+      } finally {
+        this.isLoading = false;
+      }
       /* try {
         await this.$store.dispatch("inventories/createInventory", {
           name: this.inventoryData.name,

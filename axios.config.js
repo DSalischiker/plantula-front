@@ -4,8 +4,10 @@ export const API = axios.create({ baseURL: "http://localhost:8080" });
 API.interceptors.request.use(
   (config) => {
     /* Connect to Vue State */
-    let token = store.getters.token;
+    console.log(store);
+    let token = store.getters["user/token"]["token"];
     token = token ? `Bearer ${token}` : "";
+    console.log('token', token);
     /* const { user } = store.getState();
     const token = user.token ? `Bearer ${user.token}` : ""; */
     config.headers = {

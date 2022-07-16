@@ -122,6 +122,16 @@ export default {
   },
   computed: {
     ...mapState("user", ["user"]),
+  },
+  methods: {
+    /* async getInventoryPlants() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("plant/getUserInventory")
+      } catch (error) {
+
+      }
+    } */
   }
 }
 </script>
