@@ -18,6 +18,8 @@ export default {
 
 
 <style lang="scss">
+// Import Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 #app {
   font-family: Lato, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,9 +1,6 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
-// Import Fonts
-@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap';
-
 // Set your colors
 $primary: #A0DB1A;
 $primary-light: findLightColor($primary);
@@ -88,7 +85,7 @@ $colors: mergeColorMaps(
 );
 
 // Links
-$link: $primary;
+$link: $secondary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
