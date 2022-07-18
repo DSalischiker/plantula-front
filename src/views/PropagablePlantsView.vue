@@ -17,7 +17,7 @@
           Plantas propagables
         </h1>
         <div class="">
-          <plant v-for="plant in propagablePlants" :key="plant._id" :plant="plant" />
+          <propagable-plant v-for="plant in propagablePlants" :key="plant._id" :plant="plant" />
         </div>
 
       </div>
@@ -28,8 +28,8 @@
 <script>
 // @ is an alias to /src
 import { mapGetters } from "vuex";
+import PropagablePlant from "../components/PropagablePlant.vue";
 
-import Plant from "../components/Plant.vue";
 export default {
   name: 'PropagablePlantsView',
   mounted() {
@@ -41,7 +41,7 @@ export default {
     }
   },
   components: {
-    Plant
+    PropagablePlant
   },
   computed: {
     /* propagablePlants(){

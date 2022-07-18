@@ -1,51 +1,66 @@
 <template>
-  <div v-if="!$store.state.isLoading">
-    <h1 v-if="!inventories.length" class="subtitle has-text-centered mt-2">
-      No hay inventarios.
-      <router-link :to="{ name: 'create'}">Crear uno</router-link>
-    </h1>
-    <div v-else class="columns is-multiline">
-      <!-- Inventory element -->
-      <div v-for="inventory in inventories" :key="inventory.id" class="column is-one-third">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-16by9">
-              <img
-                src="https://bulma.io/images/placeholders/1280x960.png"
-                alt="Placeholder Image"
-              />
-              </figure>
-          </div>
-          <div class="card-content">
-            <div class="media">
-              <div class="media-content">
-                <p class="title is-4">{{ inventory.name }}</p>
-                <p class="subtitle is-6">de {{ inventory.adminName }}</p>
-              </div>
-            </div>
-            <div class="content">
-              {{ inventory.description }}
-            </div>
-          </div>
+  <!-- Inventory Item element -->
+  <div class="column">
+    <div class="card">
+      <!-- <div class="card-image">
+        <figure class="image is-square">
+          <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+        </figure>
+      </div> -->
+      <div class="card-content">
+        <div class="is-flex is-justify-content-start">
+          <p class="title is-4 has-text-dark">
+            {{item.name}}
+          </p>
+        </div>
+
+        <div class="content has-text-left is-flex is-flex-direction-column is-justify-content-start">
+          {{item.description}}
+          <br>
+          <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
         </div>
       </div>
-      <!-- End of inventory element -->
+      <!-- <div>
+        <button
+          class="button is-primary"
+          :class="{ 'is-loading': isLoading }"
+        >
+          <strong>Editar</strong>
+        </button>
+      </div> -->
+      <footer class="card-footer">
+        <a href="#" class="card-footer-item">Editar</a>
+        <a href="#" class="card-footer-item">Borrar</a>
+      </footer>
     </div>
   </div>
+  <!-- End of Inventory Item element -->
 </template>
 
 <script>
 export default {
   name: "InventoryItem",
   props: {
-    inventories: {
-      type: Array,
+    item: {
+      type: Object,
       required: true
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+a {
+  color: $black;
+}
+@media(max-width: 767px) { /* <== You can change this break point as per your  needs */
+  .card-content {
+    flex-direction: column !important;
+    padding: 1em 0 !important;
+    *{
+      text-align: center !important;
+    }
 
+  }
+}
 </style>

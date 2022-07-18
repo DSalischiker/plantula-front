@@ -1,5 +1,5 @@
 <template>
-  <!-- Plant element -->
+  <!-- Propagable Plant element -->
   <div class="column is-full">
     <div class="card is-full">
       <!-- <div class="card-image">
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: "Plant",
+  name: "PropagablePlant",
   props: {
     plant: {
       type: Object,

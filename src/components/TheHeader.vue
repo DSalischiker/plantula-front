@@ -24,9 +24,9 @@
 
     <template #end>
       <b-navbar-item tag="div">
-        <template>
+        <p class="mr-4 secondary-text">
           {{user ? user.email : ""}}
-        </template>
+        </p>
         <div class="buttons">
           <template v-if="user">
             <router-link
