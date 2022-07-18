@@ -25,7 +25,7 @@
     <template #end>
       <b-navbar-item tag="div">
         <template>
-          {{user.email || ""}}
+          {{user ? user.email : ""}}
         </template>
         <div class="buttons">
           <template v-if="user">
