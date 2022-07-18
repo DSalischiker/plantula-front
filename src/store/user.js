@@ -16,9 +16,14 @@ const getters = {
 
 const mutations = {
   setUser(state, user) {
-    state.user = user.data;
+    state.user = user ? user.data : null;
     state.session.logged = user ? true : false;
-    state.session.token = user.data.token;
+    state.session.token = user ? user.data.token : '';
+  },
+  setUserFromLocal(state, localUser) {
+    state.user = localUser;
+    state.session.logged = true;
+    state.session.token = localUser.token;
   }
 }
 
@@ -28,6 +33,8 @@ const actions = {
     const user = await API.post("/login", { email: email , password: password });
     console.log(user);
     commit("setUser", user);
+    console.log(state.session.token);
+    localStorage.setItem('user', JSON.stringify(state.user));
   },
   async doRegister({ commit }, {email, password}) {
     const user = await API.post("/signup", {email, password});
@@ -35,6 +42,7 @@ const actions = {
   },
   async doLogout({ commit }) {
     commit("setUser", null);
+    localStorage.setItem('user', '');
   },
   /* getCurrentUser() {
     return new Promise((resolve, reject) => {

@@ -54,8 +54,7 @@ export default {
   methods: {
     async getPropagablePlants() {
       this.isLoading = true;
-      if (this.propagablePlants === undefined) {
-        try {
+      try {
           await this.$store.dispatch("plant/getPropagablePlants");
           this.$toast.success(`Plantas propagables cargadas`);
         } catch (error) {
@@ -63,8 +62,6 @@ export default {
         } finally {
           this.isLoading = false;
         }
-      }
-
     }
   }
 }

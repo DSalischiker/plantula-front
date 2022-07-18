@@ -21,17 +21,15 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    /* checkAuth({ dispatch, commit }) {
-      auth.onAuthStateChanged(function(user) {
-        if (user) {
-          commit("user/setUser", user);
-          dispatch("inventories/getInventories");
-        } else {
-          commit("user/setUser", null);
-          commit("inventories/setInventories", []);
-        }
-      })
-    } */
+    checkAuth({ commit }) {
+      const localUser = JSON.parse(localStorage.getItem('user'));
+      if (localUser && localUser !== '') {
+        commit("user/setUserFromLocal", localUser);
+        /* commit("user/setUser", localUser); */
+      } else {
+        commit("user/setUser", null);
+      }
+    }
   },
   modules: {
     user,
@@ -44,4 +42,4 @@ const store = new Vuex.Store({
 export default store;
 
 //Initial load
-//store.dispatch("checkAuth");
+store.dispatch("checkAuth");

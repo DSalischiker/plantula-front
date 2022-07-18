@@ -97,8 +97,43 @@
               </div>
             </div>
 
-            <div>
-              <b-field>
+            <b-field label="Estado de Crecimiento">
+              <b-slider v-model="plantData.growState" :min="1" :max="5" aria-label="Estado de Crecimiento" :tooltip="false">
+                  <b-slider-tick :value="1">Semilla</b-slider-tick>
+                  <b-slider-tick :value="2">Germinado</b-slider-tick>
+                  <b-slider-tick :value="3">Plántula</b-slider-tick>
+
+                  <b-slider-tick :value="4">Floración</b-slider-tick>
+                  <b-slider-tick :value="5">Maduración</b-slider-tick>
+              </b-slider>
+            </b-field>
+
+            <b-field class="mt-5" label="Tipo de Sol">
+              <b-slider v-model="plantData.sunType" :min="1" :max="3" aria-label="Tipo de Sol" :tooltip="false">
+                  <b-slider-tick :value="1">Sombra</b-slider-tick>
+                  <b-slider-tick :value="2">Indirecto</b-slider-tick>
+                  <b-slider-tick :value="3">Directo</b-slider-tick>
+              </b-slider>
+            </b-field>
+
+            <b-field class="mt-5" label="Sol">
+              <b-slider v-model="plantData.sunAmount" :min="1" :max="3" aria-label="Sol" :tooltip="false">
+                  <b-slider-tick :value="1">Poco</b-slider-tick>
+                  <b-slider-tick :value="2">Regular</b-slider-tick>
+                  <b-slider-tick :value="3">Mucho</b-slider-tick>
+              </b-slider>
+            </b-field>
+
+            <b-field class="mt-5" label="Agua">
+              <b-slider v-model="plantData.waterAmount" :min="1" :max="3" aria-label="Agua" :tooltip="false">
+                  <b-slider-tick :value="1">Poca</b-slider-tick>
+                  <b-slider-tick :value="2">Regular</b-slider-tick>
+                  <b-slider-tick :value="3">Mucha</b-slider-tick>
+              </b-slider>
+            </b-field>
+
+            <div class="mt-5">
+              <b-field class="mt-5">
                 <b-checkbox name="propagable" v-model="plantData.propagable">Es propagable</b-checkbox>
               </b-field>
               <!-- <b-field>
@@ -108,19 +143,7 @@
               </b-field> -->
             </div>
 
-            <b-field label="Estado de crecimiento">
-              <b-slider v-model="plantData.growState" :min="1" :max="5" size="is-small" ticks></b-slider>
-            </b-field>
-
-            <b-field label="Sol">
-              <b-slider v-model="plantData.sunAmount" :min="1" :max="5" size="is-small" ticks></b-slider>
-            </b-field>
-
-            <b-field label="Agua">
-              <b-slider v-model="plantData.waterAmount" :min="1" :max="5" size="is-small" ticks></b-slider>
-            </b-field>
-
-            <div class="field-has-text-right">
+            <div class="field-has-text-right mt-3">
               <div class="control">
                 <button
                   type="submit"
@@ -151,7 +174,7 @@ export default {
         growState: 0,
         sunType: 0,
         sunAmount: 0,
-        water: 0,
+        waterAmount: 0,
         description: "",
       },
       dropFiles: [],
@@ -168,7 +191,7 @@ export default {
           growState: this.plantData.growState,
           sunType: this.plantData.sunType,
           sunAmount: this.plantData.sunAmount,
-          water: this.plantData.water,
+          waterAmount: this.plantData.waterAmount,
           description: this.plantData.description
         });
         this.$toast.success(`¡${this.plantData.name} agregada con éxito!`);

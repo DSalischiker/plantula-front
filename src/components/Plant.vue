@@ -12,12 +12,12 @@
       </div> -->
       <div class="card-content py-0 is-full is-flex is-row is-column-mobile is-align-items-center is-justify-content-space-between">
         <div class="media is-justify-content-start">
-          <div class="media-content has-text-left">
+          <div class="media-content has-text-left mt-3">
             <p class="title is-4">{{ plant.name }}</p>
             <p class="subtitle is-6">de {{ plant.user.email }}</p>
           </div>
         </div>
-        <div class="content is-justify-content-center is-align-items-center">
+        <div class="content is-justify-content-center is-align-items-center mt-3">
           {{ plant.description }}
         </div>
         <section>

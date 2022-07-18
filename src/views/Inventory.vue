@@ -112,26 +112,35 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "Inventory",
+  mounted() {
+    this.getUserInventory();
+  },
   data() {
     return {
       isLoading: false,
     };
   },
   computed: {
-    ...mapState("user", ["user"]),
+    ...mapGetters({
+      userInventory: "inventories/userInventory",
+    }),
   },
   methods: {
-    /* async getInventoryPlants() {
+    async getUserInventory() {
       this.isLoading = true;
       try {
-        await this.$store.dispatch("plant/getUserInventory")
+        await this.$store.dispatch("inventories/getUserInventory");
+        this.$toast.success(`Inventario traído con éxito`);
       } catch (error) {
-
+        console.error(error.message);
+        this.$toast.error(error.message);
+      } finally {
+        this.isLoading = true;
       }
-    } */
+    }
   }
 }
 </script>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from './src/store';
-export const API = axios.create({ baseURL: "http://localhost:8080" });
+export const API = axios.create({ baseURL: "https://obscure-beach-44003.herokuapp.com" });
 API.interceptors.request.use(
   (config) => {
     /* Connect to Vue State */

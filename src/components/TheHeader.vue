@@ -12,18 +12,21 @@
       <b-navbar-item tag="router-link" :to="{ path: '/inventory' }">
         Mi inventario
       </b-navbar-item>
-      <b-navbar-dropdown label="Info" aria-role="menu" :focusable="true">
+      <!-- <b-navbar-dropdown label="Info" aria-role="menu" :focusable="true">
         <b-navbar-item aria-role="menuitem">
           About
         </b-navbar-item>
         <b-navbar-item aria-role="menuitem">
           Contact
         </b-navbar-item>
-      </b-navbar-dropdown>
+      </b-navbar-dropdown> -->
     </template>
 
     <template #end>
       <b-navbar-item tag="div">
+        <template>
+          {{user.email || ""}}
+        </template>
         <div class="buttons">
           <template v-if="user">
             <router-link

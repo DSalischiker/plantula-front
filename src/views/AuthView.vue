@@ -203,6 +203,7 @@ export default {
           password: this.userData.password,
         });
         this.$toast.success("Cuenta Creada");
+        this.doLogin();
         this.resetData();
         this.redirect();
       } catch (error) {

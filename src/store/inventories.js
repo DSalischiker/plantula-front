@@ -1,29 +1,29 @@
+import { API } from "../../axios.config";
+
 //import { API } from '../../axios.config';
 const state = {
-  inventories: []
+  inventory: []
 };
 
+const getters = {
+  userInventory(state) {
+    return state.inventory;
+  }
+}
+
 const mutations = {
-  setInventories(state, inventories) {
-    state.inventories = inventories;
+  setInventory(state, inventory) {
+    state.inventory = inventory;
   }
 };
 
 const actions = {
-  /* async getUserInventory({ commit }, {userId}) {
-    await
-  } */
-  /* async createInventory({ rootState }, { name, description }) {
-    await db
-      .collection("inventories")
-      .add({
-        name,
-        description,
-        createdAt: Date.now(),
-        adminUid: rootState.user.user.uid,
-        adminName: rootState.user.user.displayName
-      })
-  },
+  async getUserInventory({ commit }) {
+    const inventory = await API.get("/inventory");
+    console.log(inventory);
+    commit("setInventory", inventory);
+  }
+  /*
   async getInventories({ commit }) {
     const query = db
       .collection("inventories")
@@ -46,6 +46,7 @@ const actions = {
 export default {
   namespaced: true,
   state,
+  getters,
   actions,
   mutations
 };
