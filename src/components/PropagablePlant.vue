@@ -1,7 +1,7 @@
 <template>
   <!-- Propagable Plant element -->
   <div class="column is-6">
-    <div class="card is-full">
+    <div class="card is-secondary is-full">
       <!-- <div class="card-image">
         <figure class="image is-16by9">
           <img

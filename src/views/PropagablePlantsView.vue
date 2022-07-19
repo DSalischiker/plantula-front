@@ -57,7 +57,7 @@ export default {
       this.isLoading = true;
       try {
           await this.$store.dispatch("plant/getPropagablePlants");
-          this.$toast.success(`Plantas propagables cargadas`);
+          //this.$toast.success(`Plantas propagables cargadas`);
         } catch (error) {
           this.$toast.error(error.message);
         } finally {
