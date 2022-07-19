@@ -27,11 +27,11 @@ const mutations = {
 };
 
 const actions = {
-  async addPlant({ commit }, { name, image, propagable, growState, sunType, sunAmount, waterAmount, description }) {
+  async addPlant({ commit }, { name, image, propagable, growState, sunType, sunAmount, water, description }) {
     console.log(state);
     const plant = await API.post(
       "/plant",
-      { name, image, propagable, growState, sunType, sunAmount, waterAmount, description },
+      { name, image, propagable, growState, sunType, sunAmount, water, description },
       {
         /* headers: {
           'Authorization': `Basic ${state.token}`
@@ -41,10 +41,10 @@ const actions = {
     console.log(plant);
     commit("setPlant", plant);
   },
-  async updatePlant({ commit }, {_id, name, image, propagable, growState, sunType, sunAmount, waterAmount, description }) {
+  async updatePlant({ commit }, {_id, name, image, propagable, growState, sunType, sunAmount, water, description }) {
     const plant = await API.put(
       `/plant/${_id}`,
-      { name, image, propagable, growState, sunType, sunAmount, waterAmount, description}
+      { name, image, propagable, growState, sunType, sunAmount, water, description}
     );
     console.log("updated", plant);
     commit("setPlant", plant);

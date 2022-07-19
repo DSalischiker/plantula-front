@@ -125,7 +125,7 @@
             </b-field>
 
             <b-field class="mt-5" label="Agua">
-              <b-slider v-model="plant.waterAmount" :min="1" :max="3" aria-label="Agua" :tooltip="false">
+              <b-slider v-model="plant.water" :min="1" :max="3" aria-label="Agua" :tooltip="false">
                   <b-slider-tick :value="1">Poca</b-slider-tick>
                   <b-slider-tick :value="2">Regular</b-slider-tick>
                   <b-slider-tick :value="3">Mucha</b-slider-tick>
@@ -185,13 +185,13 @@ export default {
           growState: this.plant.growState,
           sunType: this.plant.sunType,
           sunAmount: this.plant.sunAmount,
-          waterAmount: this.plant.waterAmount,
+          water: this.plant.water,
           description: this.plant.description
         });
         this.$toast.success(`¡${this.plant.name} editada con éxito!`);
         this.plant.name = this.plant.image = this.plant.description = "";
         this.plant.propagable = false;
-        this.plant.growState = this.plant.sunType = this.plant.sunAmount = this.plant.waterAmount = 0;
+        this.plant.growState = this.plant.sunType = this.plant.sunAmount = this.plant.water = 0;
         this.$router.push({ name: "inventory" });
       } catch (error) {
         console.error(error.message);

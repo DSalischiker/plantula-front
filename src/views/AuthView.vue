@@ -4,7 +4,7 @@
       <div class="columns">
         <div class="column is-half is-offset-one-quarter">
           <template v-if="action === 'login'">
-            <h1 class="title has-text-centered">Login</h1>
+            <h1 class="title has-text-centered">Ingreso</h1>
             <!-- Login Form -->
             <form @submit.prevent="doLogin">
               <div class="field">
@@ -14,14 +14,14 @@
                     v-model="userData.email"
                     class="input"
                     type="email"
-                    placeholder="e.g. alexsmith@gmail.com"
+                    placeholder="e.g. emilioravenna@gmail.com"
                     required
                   >
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">Password</label>
+                <label class="label">Contraseña</label>
                 <div class="control">
                   <input
                     v-model="userData.password"
@@ -39,12 +39,12 @@
                     class="button is-primary"
                     :class="{ 'is-loading': isLoading }"
                   >
-                    <strong>Login</strong>
+                    <strong>Ingresar</strong>
                   </button>
                 </div>
               </div>
-              <a class="is-block" @click="action = 'register'">Don't have an account? Register</a>
-              <a class="is-block" @click="action = 'reset'">Forgot your password?</a>
+              <a class="is-block" @click="action = 'register'">¿No tenés una cuenta? Registrate</a>
+              <a class="is-block" @click="action = 'reset'">¿Olvidaste tu contraseña?</a>
             </form>
           </template>
           <!-- End Login Form -->
@@ -52,7 +52,7 @@
           <!-- Register Form -->
           <template v-if="action === 'register'">
             <h1 class="title has-text-centered">
-              Register
+              Registro
             </h1>
             <form @submit.prevent="doRegister">
               <!-- <div class="field">
@@ -75,14 +75,14 @@
                     v-model="userData.email"
                     class="input"
                     type="email"
-                    placeholder="ej: alexsmith@gmail.com"
+                    placeholder="ej: mariosantos@gmail.com"
                     required
                   >
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">Password</label>
+                <label class="label">Contraseña</label>
                 <div class="control">
                   <input
                     v-model="userData.password"
@@ -128,18 +128,18 @@
                     class="button is-primary"
                     :class="{ 'is-loading': isLoading }"
                   >
-                    <strong>Register</strong>
+                    <strong>Registrar</strong>
                   </button>
                 </div>
               </div>
-              <a @click="action = 'login'">Already have an account? Login</a>
+              <a @click="action = 'login'">¿Ya tenés una cuenta? Ingresá</a>
             </form>
           </template>
           <!-- End Register Form -->
 
           <!-- Password reset email -->
           <template v-if="action === 'reset'">
-            <h1 class="title has-text-centered">Change Password</h1>
+            <h1 class="title has-text-centered">Cambiar contraseña</h1>
             <form @submit.prevent="doReset">
               <div class="field">
                 <label class="label">Email</label>
@@ -165,7 +165,7 @@
                   </button>
                 </div>
               </div>
-              <a @click="action = 'login'">Already have an account? Login</a>
+              <a @click="action = 'login'">¿Ya tenés una cuenta? Ingresá</a>
             </form>
           </template>
           <!-- End of password reset email -->

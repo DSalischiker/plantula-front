@@ -12,6 +12,11 @@ $secondary-light: findLightColor($secondary);
 $secondary-dark: findDarkColor($secondary);
 $secondary-invert: findColorInvert($secondary);
 
+$danger: $red;
+$danger-invert: findColorInvert($danger);
+$danger-light: findLightColor($danger);
+$danger-dark: findDarkColor($danger);
+
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
 

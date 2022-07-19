@@ -2,7 +2,7 @@
   <div class="home">
     <section class="hero is-small is-secondary mb-4" spaced="true">
       <div class="hero-body is-flex is-flex-direction-column is-justify-content-start">
-        <p class="title is-4 is-black" >Inventario de user</p>
+        <p class="title is-4 is-black" >Inventario de {{user.email}}</p>
       </div>
       <router-link
         class="button is-primary"
@@ -16,7 +16,7 @@
           <section class="hero is-small is-secondary" spaced="true">
           </section>
           <p v-if="isLoading">Cargando...</p>
-          <div v-else class="columns is-desktop">
+          <div v-else class="columns is-desktop mx-2">
             <inventory-item v-for="item in userInventory.plants" :item="item" :key="item.id"/>
             <!-- <div class="column">
               <div class="card">
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import InventoryItem from "../components/InventoryItem.vue";
 
 export default {
@@ -67,6 +67,7 @@ export default {
     ...mapGetters({
       userInventory: "inventories/userInventory",
     }),
+    ...mapState("user", ["user"])
   },
   methods: {
     async getUserInventory() {

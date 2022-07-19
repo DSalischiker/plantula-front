@@ -125,7 +125,7 @@
             </b-field>
 
             <b-field class="mt-5" label="Agua">
-              <b-slider v-model="plantData.waterAmount" :min="1" :max="3" aria-label="Agua" :tooltip="false">
+              <b-slider v-model="plantData.water" :min="1" :max="3" aria-label="Agua" :tooltip="false">
                   <b-slider-tick :value="1">Poca</b-slider-tick>
                   <b-slider-tick :value="2">Regular</b-slider-tick>
                   <b-slider-tick :value="3">Mucha</b-slider-tick>
@@ -174,7 +174,7 @@ export default {
         growState: 0,
         sunType: 0,
         sunAmount: 0,
-        waterAmount: 0,
+        water: 0,
         description: "",
       },
       dropFiles: [],
@@ -191,13 +191,13 @@ export default {
           growState: this.plantData.growState,
           sunType: this.plantData.sunType,
           sunAmount: this.plantData.sunAmount,
-          waterAmount: this.plantData.waterAmount,
+          water: this.plantData.water,
           description: this.plantData.description
         });
         this.$toast.success(`¡${this.plantData.name} agregada con éxito!`);
         this.plantData.name = this.plantData.image = this.plantData.description = "";
         this.plantData.propagable = false;
-        this.plantData.growState = this.plantData.sunType = this.plantData.sunAmount = this.plantData.waterAmount = 0;
+        this.plantData.growState = this.plantData.sunType = this.plantData.sunAmount = this.plantData.water = 0;
         this.$router.push({ name: "inventory" });
       } catch (error) {
         console.error(error.message);
