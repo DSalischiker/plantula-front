@@ -1,6 +1,6 @@
 <template>
   <!-- Inventory Item element -->
-  <div class="column">
+  <div class="column is-4">
     <div class="card">
       <!-- <div class="card-image">
         <figure class="image is-square">
@@ -14,18 +14,26 @@
           </p>
         </div>
 
-        <p class="content subtitle has-text-left is-flex is-justify-content-start">
+        <p class="content mb-2 pb-0 subtitle has-text-left is-flex is-justify-content-start">
           {{item.description}}
           <br>
           <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
         </p>
-
-        <div class="content has-text-left is-flex is-flex-direction-column is-justify-content-start">
-          <p>{{`Estado de crecimiento: ${getGrowStateString()}`}}</p>
-          <p>{{`Tipo de Sol: ${getSunTypeString()}`}}</p>
-          <p>{{`Cantidad de Sol: ${getSunAmountString()}`}}</p>
-          <p>{{`Agua: ${getWaterString()}`}}</p>
-        </div>
+        <div class="divider mb-2"></div>
+        <b-taglist class="content has-text-left is-flex is-justify-content-start">
+          <b-tag type="is-success is-light">{{`Estado de crecimiento: ${getGrowStateString()}`}}</b-tag>
+          <b-tag type="is-warning is-light">{{`Tipo de Sol: ${getSunTypeString()}`}}</b-tag>
+          <b-tag type="is-warning is-light">{{`Cantidad de Sol: ${getSunAmountString()}`}}</b-tag>
+          <b-tag type="is-info is-light">{{`Agua: ${getWaterString()}`}}</b-tag>
+          <b-tag
+            :type="item.propagable ? 'is-primary' : 'is-danger'"
+            class="is-flex is-align-items-center"
+          >
+            <span>
+              {{item.propagable ? 'Es' : "No es"}} propagable
+            </span>
+          </b-tag>
+        </b-taglist>
       </div>
       <!-- <div>
         <button
@@ -173,6 +181,10 @@ a {
     justify-content: start !important;
   }
 
+}
+.divider {
+  border: 1px solid $secondary-light;
+  margin-top: 0;
 }
 @media(max-width: 767px) { /* <== You can change this break point as per your  needs */
   .card-content {

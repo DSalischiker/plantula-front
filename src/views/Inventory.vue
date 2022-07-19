@@ -16,7 +16,7 @@
           <section class="hero is-small is-secondary" spaced="true">
           </section>
           <p v-if="isLoading">Cargando...</p>
-          <div v-else class="columns is-desktop mx-2">
+          <div v-else class="columns is-multiline is-desktop mx-2">
             <inventory-item v-for="item in userInventory.plants" :item="item" :key="item.id"/>
             <!-- <div class="column">
               <div class="card">
@@ -100,5 +100,8 @@ export default {
 }
 .container {
   min-height: 50vh;
+}
+.columns {
+  //max-width: 90% !important;
 }
 </style>

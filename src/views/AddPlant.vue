@@ -193,7 +193,7 @@ export default {
         await this.$store.dispatch("plant/addPlant", {
           name: this.plantData.name,
           image: this.plantData.image,
-          propagable: this.plantData.propagable,
+          propagable: !this.isPropagableValid ? false : this.plantData.propagable,
           growState: this.plantData.growState,
           sunType: this.plantData.sunType,
           sunAmount: this.plantData.sunAmount,

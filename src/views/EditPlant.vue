@@ -186,7 +186,7 @@ export default {
           _id: this.plant._id,
           name: this.plant.name,
           image: this.plant.image,
-          propagable: this.plant.propagable,
+          propagable: !this.isPropagableValid ? false : this.plant.propagable,
           growState: this.plant.growState,
           sunType: this.plant.sunType,
           sunAmount: this.plant.sunAmount,
