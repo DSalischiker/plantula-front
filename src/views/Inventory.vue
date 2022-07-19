@@ -8,7 +8,7 @@
         class="button is-primary"
         :to="{ name: 'addPlant' }"
       >
-        <strong>Agregar planta</strong>
+        <strong>Agregar planta a inventario</strong>
       </router-link>
     </section>
       <div class="container">
@@ -74,7 +74,7 @@ export default {
       this.isLoading = true;
       try {
         await this.$store.dispatch("inventories/getUserInventory");
-        this.$toast.success(`Inventario traído con éxito`);
+        //this.$toast.success(`Inventario traído con éxito`);
       } catch (error) {
         console.error(error.message);
         this.$toast.error(error.message);

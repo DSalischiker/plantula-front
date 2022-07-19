@@ -10,10 +10,10 @@
         </b-button>
       </section>
       <div class="columns">
-        <div class="column is-half is-offset-one-quarter">
-          <h1 class="title has-text-centered">Agregar Planta</h1>
+        <div class="column is-half is-offset-one-quarter has-text-left">
+          <h1 class="title has-text-centered">Añadir Planta</h1>
           <form @submit.prevent="createPlant">
-            <div class="field">
+            <div class="field pb-3">
               <label class="name">Nombre</label>
               <div class="control">
                 <input
@@ -53,19 +53,19 @@
             </b-field> -->
 
             <div>
-              <b-field>
+              <b-field class="mt-5 py-3 has-text-centered">
                 <b-upload v-model="dropFiles"
                     multiple
                     drag-drop>
-                  <section class="section">
-                    <div class="content has-text-centered">
-                      <p>
+                  <section class=" section">
+                    <div class="content is-flex is-align-items-center has-text-centered">
+                      <p class="my-0 mr-4" >
                         <b-icon
-                            icon="upload"
-                            size="is-large">
+                          icon="upload"
+                          size="is-medium">
                         </b-icon>
                       </p>
-                      <p>Drop your files here or click to upload</p>
+                      <p>Soltá tus archivos acá o hacé click</p>
                     </div>
                   </section>
                 </b-upload>
@@ -85,7 +85,7 @@
               </div>
             </div>
 
-            <div class="field">
+            <div class="field mt-5 py-3">
               <label class="name">Descripción</label>
               <div class="control">
                 <textarea
@@ -97,7 +97,7 @@
               </div>
             </div>
 
-            <b-field label="Estado de Crecimiento">
+            <b-field class="mt-5 py-3" label="Estado de Crecimiento">
               <b-slider v-model="plantData.growState" :min="1" :max="5" aria-label="Estado de Crecimiento" :tooltip="false">
                   <b-slider-tick :value="1">Semilla</b-slider-tick>
                   <b-slider-tick :value="2">Germinado</b-slider-tick>
@@ -108,7 +108,7 @@
               </b-slider>
             </b-field>
 
-            <b-field class="mt-5" label="Tipo de Sol">
+            <b-field class="mt-5 py-3" label="Tipo de Sol">
               <b-slider v-model="plantData.sunType" :min="1" :max="3" aria-label="Tipo de Sol" :tooltip="false">
                   <b-slider-tick :value="1">Sombra</b-slider-tick>
                   <b-slider-tick :value="2">Indirecto</b-slider-tick>
@@ -116,7 +116,7 @@
               </b-slider>
             </b-field>
 
-            <b-field class="mt-5" label="Sol">
+            <b-field class="mt-5 py-3" label="Sol">
               <b-slider v-model="plantData.sunAmount" :min="1" :max="3" aria-label="Sol" :tooltip="false">
                   <b-slider-tick :value="1">Poco</b-slider-tick>
                   <b-slider-tick :value="2">Regular</b-slider-tick>
@@ -124,7 +124,7 @@
               </b-slider>
             </b-field>
 
-            <b-field class="mt-5" label="Agua">
+            <b-field class="mt-5 py-3" label="Agua">
               <b-slider v-model="plantData.water" :min="1" :max="3" aria-label="Agua" :tooltip="false">
                   <b-slider-tick :value="1">Poca</b-slider-tick>
                   <b-slider-tick :value="2">Regular</b-slider-tick>
@@ -132,10 +132,11 @@
               </b-slider>
             </b-field>
 
-            <div class="mt-5">
-              <b-field class="mt-5">
-                <b-checkbox name="propagable" v-model="plantData.propagable">Es propagable</b-checkbox>
+            <div class="mt-5 py-5 has-text-centered">
+              <b-field class="subtitle is-5 mt-5">
+                <b-checkbox name="propagable" v-model="plantData.propagable" :disabled="!isPropagableValid">La quiero propagar</b-checkbox>
               </b-field>
+              <p v-if="!isPropagableValid">La planta debe haber alcanzado el estado de floración para ser propagable</p>
               <!-- <b-field>
                   <b-checkbox v-model="plantData.isPropagable">
                       No
@@ -143,7 +144,7 @@
               </b-field> -->
             </div>
 
-            <div class="field-has-text-right mt-3">
+            <div class="field has-text-centered mt-5 pt-5">
               <div class="control">
                 <button
                   type="submit"
@@ -178,6 +179,11 @@ export default {
         description: "",
       },
       dropFiles: [],
+    }
+  },
+  computed: {
+    isPropagableValid() {
+      return this.plantData.growState >= 4;
     }
   },
   methods: {
@@ -227,6 +233,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>
