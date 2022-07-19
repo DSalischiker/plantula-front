@@ -15,8 +15,9 @@
         <template>
           <section class="hero is-small is-secondary" spaced="true">
           </section>
-          <div class="columns is-desktop">
-            <inventory-item v-for="item in userInventory.data.data.plants" :item="item" :key="item.id"/>
+          <p v-if="isLoading">Cargando...</p>
+          <div v-else class="columns is-desktop">
+            <inventory-item v-for="item in userInventory.plants" :item="item" :key="item.id"/>
             <!-- <div class="column">
               <div class="card">
                 <div class="card-image">
@@ -77,7 +78,7 @@ export default {
         console.error(error.message);
         this.$toast.error(error.message);
       } finally {
-        this.isLoading = true;
+        this.isLoading = false;
       }
     }
   }

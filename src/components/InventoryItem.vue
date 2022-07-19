@@ -29,8 +29,8 @@
         </button>
       </div> -->
       <footer class="card-footer">
-        <a href="#" class="card-footer-item">Editar</a>
-        <a href="#" class="card-footer-item">Borrar</a>
+        <router-link :to="{ name: 'editPlant', params: {plant: JSON.stringify(item)} }" class="card-footer-item">Editar</router-link>
+        <a @click="deletePlant" class="card-footer-item">Borrar</a>
       </footer>
     </div>
   </div>
@@ -44,6 +44,34 @@ export default {
     item: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    async deletePlant() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("plant/deletePlant", {_id: this.item._id });
+        this.$toast.success(`¡${this.item.name} removida con éxito!`);
+        await this.getUserInventory();
+        //this.$router.push({ name: "inventory" });
+      } catch (error) {
+        console.error(error.message);
+        this.$toast.error(error.message);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    async getUserInventory() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("inventories/getUserInventory");
+        this.$toast.success(`Inventario traído con éxito`);
+      } catch (error) {
+        console.error(error.message);
+        this.$toast.error(error.message);
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
 }

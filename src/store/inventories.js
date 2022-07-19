@@ -20,8 +20,8 @@ const mutations = {
 const actions = {
   async getUserInventory({ commit }) {
     const inventory = await API.get("/inventory");
-    console.log(inventory);
-    commit("setInventory", inventory);
+    //console.log(inventory);
+    commit("setInventory", inventory.data.data);
   }
   /*
   async getInventories({ commit }) {

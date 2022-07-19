@@ -16,9 +16,9 @@ const mutations = {
   setPlant(state, plant) {
     state.plants.push(plant);
   },
-  removePlant(state, id) {
+  removePlant(state, _id) {
     state.plants.filter((plant) => {
-      plant._id !== id;
+      plant._id !== _id;
     });
   },
   setPropagablePlants(state, plants) {
@@ -27,11 +27,11 @@ const mutations = {
 };
 
 const actions = {
-  async addPlant({ commit }, { name, image, propagable, growState, sunType, sunAmount, water, description }) {
+  async addPlant({ commit }, { name, image, propagable, growState, sunType, sunAmount, waterAmount, description }) {
     console.log(state);
     const plant = await API.post(
       "/plant",
-      { name, image, propagable, growState, sunType, sunAmount, water, description },
+      { name, image, propagable, growState, sunType, sunAmount, waterAmount, description },
       {
         /* headers: {
           'Authorization': `Basic ${state.token}`
@@ -41,15 +41,23 @@ const actions = {
     console.log(plant);
     commit("setPlant", plant);
   },
+  async updatePlant({ commit }, {_id, name, image, propagable, growState, sunType, sunAmount, waterAmount, description }) {
+    const plant = await API.put(
+      `/plant/${_id}`,
+      { name, image, propagable, growState, sunType, sunAmount, waterAmount, description}
+    );
+    console.log("updated", plant);
+    commit("setPlant", plant);
+  },
   async getPropagablePlants({ commit }) {
     const plants = await API.get("/plant/propagables");
     console.log(plants);
     commit("setPropagablePlants", plants.data);
   },
-  async deletePlant({ commit }, { id }) {
-    const deletedPlant = await API.delete(`/plant/${id}`);
+  async deletePlant({ commit }, {_id}) {
+    const deletedPlant = await API.delete(`/plant/${_id}`);
     console.log("deleted", deletedPlant);
-    commit("removePlant", id);
+    commit("removePlant", _id);
   }
   /* async createPlant({ rootState }, { name, description, isPropagable, stage, sunType, sunlight, water, inventory }) {
     await db

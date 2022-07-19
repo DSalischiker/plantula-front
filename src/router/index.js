@@ -13,12 +13,12 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/PropagablePlantsView.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/PropagablePlantsView.vue')
   },
   {
     path: "/auth",
     name: "auth",
-    component: () => import(/* webpackChunkName: "about" */ '../views/AuthView.vue')
+    component: () => import(/* webpackChunkName: "auth" */ '../views/AuthView.vue')
   },
   {
     path: "/profile",
@@ -26,7 +26,7 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/UserProfile.vue')
+    component: () => import(/* webpackChunkName: "profile" */ '../views/UserProfile.vue')
   },
   {
     path: '/inventory',
@@ -37,15 +37,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Inventory.vue')
-  },
-  {
-    path: "/create",
-    name: "createInventory",
-    meta: {
-      requiresAuth: true
-    },
-    component: () => import(/* webpackChunkName: "about" */ '../views/CreateInventory.vue')
+    component: () => import(/* webpackChunkName: "inventory" */ '../views/Inventory.vue')
   },
   {
     path: "/inventory/add",
@@ -53,8 +45,20 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-    component: () => import (/* webpackChunkName: "about" */ '../views/AddPlant.vue')
-  }
+    component: () => import (/* webpackChunkName: "addPlant" */ '../views/AddPlant.vue')
+  },
+  {
+    path: "/inventory/edit",
+    name: "editPlant",
+    meta: {
+      requiresAuth: true
+    },
+    props: (route) => ({
+      plant: route.params.plant,
+      ...route.params
+    }),
+    component: () => import (/* webpackChunkName: "editPlant" */ '../views/EditPlant.vue')
+  },
 ]
 
 const router = new VueRouter({

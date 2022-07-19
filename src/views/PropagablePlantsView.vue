@@ -16,7 +16,8 @@
         <h1 class="title has-text-centered is-black">
           Plantas propagables
         </h1>
-        <div class="">
+        <p v-if="isLoading">Cargando...</p>
+        <div v-else class="">
           <propagable-plant v-for="plant in propagablePlants" :key="plant._id" :plant="plant" />
         </div>
 
