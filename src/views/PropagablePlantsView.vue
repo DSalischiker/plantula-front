@@ -17,7 +17,7 @@
           Plantas propagables
         </h1>
         <p v-if="isLoading">Cargando...</p>
-        <div v-else class="">
+        <div v-else class="columns is-multiline">
           <propagable-plant v-for="plant in propagablePlants" :key="plant._id" :plant="plant" />
         </div>
 

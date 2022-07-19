@@ -1,6 +1,6 @@
 <template>
   <!-- Propagable Plant element -->
-  <div class="column is-full">
+  <div class="column is-6">
     <div class="card is-full">
       <!-- <div class="card-image">
         <figure class="image is-16by9">
@@ -14,12 +14,12 @@
         <div class="media is-justify-content-start">
           <div class="media-content has-text-left mt-3">
             <p class="title is-4">{{ plant.name }}</p>
-            <p class="subtitle is-6">de {{ plant.user.email }}</p>
+            <p class="subtitle is-6 email">de {{ plant.user.email }}</p>
           </div>
         </div>
-        <div class="content is-justify-content-center is-align-items-center mt-3">
+        <p class="content description is-justify-content-center is-align-items-center mt-3">
           {{ plant.description }}
-        </div>
+        </p>
         <section>
           <b-button type="is-primary text-white">
             <a target="_blank" :href="`mailto:${plant.user.email}?subject=¿Te puedo pedir un esqueje?&body=¡Hola! Vi en Plántula que tu ${plant.name} es propagable! ¿Te puedo pedir un esqueje? ¡Gracias!`">
@@ -49,6 +49,17 @@ export default {
 a {
   color: $black;
 }
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 2em;
+  //white-space: nowrap;
+}
+.email {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 @media(max-width: 767px) { /* <== You can change this break point as per your  needs */
   .card-content {
     flex-direction: column !important;
@@ -56,7 +67,6 @@ a {
     *{
       text-align: center !important;
     }
-
   }
 }
 </style>
