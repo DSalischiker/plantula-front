@@ -83,4 +83,7 @@ export default {
 .subtitle{
   color: $light !important;
 }
+.container {
+  min-height: 50vh;
+}
 </style>

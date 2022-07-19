@@ -64,12 +64,11 @@ h3 {
   min-width: fit-content;
 }
 .footer {
-  padding: 3em 0;
+  padding: 3em 2em;
   margin-top: 10vh;
   width: 100vw;
   background-color: $dark;
   color: $white;
-  bottom: 0;
 }
 a{
   color: $primary;
