@@ -14,13 +14,13 @@
           </p>
         </div>
 
-        <div class="content has-text-left is-flex is-flex-direction-column is-justify-content-start">
+        <p class="content subtitle has-text-left is-flex is-justify-content-start">
           {{item.description}}
           <br>
           <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
-        </div>
+        </p>
 
-        <div class="content has-text-left is-flex is-flex-direction-column">
+        <div class="content has-text-left is-flex is-flex-direction-column is-justify-content-start">
           <p>{{`Estado de crecimiento: ${getGrowStateString()}`}}</p>
           <p>{{`Tipo de Sol: ${getSunTypeString()}`}}</p>
           <p>{{`Cantidad de Sol: ${getSunAmountString()}`}}</p>
@@ -165,6 +165,14 @@ export default {
 <style lang="scss">
 a {
   color: $black;
+}
+
+.content {
+  p{
+    text-align: left !important;
+    justify-content: start !important;
+  }
+
 }
 @media(max-width: 767px) { /* <== You can change this break point as per your  needs */
   .card-content {
