@@ -11,7 +11,7 @@
       </section>
       <div class="columns">
         <div class="column is-half is-offset-one-quarter has-text-left">
-          <h1 class="title has-text-centered">Añadir Planta</h1>
+          <h1 class="title has-text-centered">Agregar Planta</h1>
           <form @submit.prevent="createPlant">
             <div class="field pb-3">
               <label class="name">Nombre</label>

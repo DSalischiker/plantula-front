@@ -185,7 +185,7 @@ a {
 }
 .card-footer-item {
   &.edit:hover{
-    background-color: $primary-light !important;
+    background-color: $secondary-light !important;
   }
   &.remove:hover {
     background-color: $danger-light !important;
